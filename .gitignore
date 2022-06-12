@@ -1,0 +1,8 @@
+/target
+.idea/
+.vscode/
+.DS_Store/
+*.log
+*.exe
+*.out
+node_modules/

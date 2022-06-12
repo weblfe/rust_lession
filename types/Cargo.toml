@@ -1,0 +1,9 @@
+[package]
+name= "types"
+version = "0.1.0"
+authors = ["weblfe weblinuxgame@126.com"]
+description= "类型学习练习"
+edition= "2021"
+
+[dependencies]
+rand = "0.8.5"
