@@ -2,6 +2,8 @@ use std::format;
 use std::any::type_name;
 
 fn main() {
+    /// 类型 primitives
+    /// 标量类型（scalar type）
     // 字符
     let ch = 'a';
     // 字符串
@@ -20,6 +22,8 @@ fn main() {
     // 布尔
     let yes  = true;
     let no  = false;
+
+    /// 复合类型（compound type）
     // 单元类型
     let null = ();
     // 元组
@@ -37,7 +41,7 @@ fn main() {
         age: 5,
         name: "rust"
     };
-    // enum 美军
+    // enum 枚举
     #[derive(Debug)]
     enum Color {
         Red,
