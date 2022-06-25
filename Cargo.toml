@@ -1,7 +1,8 @@
 [workspace]
 members = [
     "types",
-    "hello_world"
+    "hello_world",
+    "array"
 ]
 
 

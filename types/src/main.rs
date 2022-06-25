@@ -1,9 +1,10 @@
 use std::format;
 use std::any::type_name;
 
+/// 类型 primitives
+/// 标量类型（scalar type）
 fn main() {
-    /// 类型 primitives
-    /// 标量类型（scalar type）
+
     // 字符
     let ch = 'a';
     // 字符串
@@ -16,6 +17,12 @@ fn main() {
     let f : f64 =  100.00;
     let fx : f32 = 1.00;
     let us : usize = 123;
+    // 取反
+    let  zero_not: usize = !0;
+    let mut zero_not2 : usize  =1111;
+    let xor : usize = 9;
+    // 取系统位数
+    let bit : usize = 32<<((!0 as usize) >>63);
     let u32 : u32 = 122;
     let u64: u64 = 12333;
     let u128 : u128 = 122222;
@@ -23,7 +30,7 @@ fn main() {
     let yes  = true;
     let no  = false;
 
-    /// 复合类型（compound type）
+    // 复合类型（compound type）
     // 单元类型
     let null = ();
     // 元组
@@ -48,7 +55,12 @@ fn main() {
         Green,
         Blue,
     }
-
+    // 按位异或与赋值
+    println!("typeof={},zero_not2={}",type_of_name(&zero_not2),zero_not2);
+    zero_not2 ^=xor;
+    println!("typeof={},after xor {},zero_not2={}",type_of_name(&zero_not2),xor,zero_not2);
+    println!("typeof={},zero_not={}",type_of_name(&zero_not),zero_not);
+    println!("typeof={},bit={}",type_of_name(&bit),bit);
     println!("typeof={},char={}",type_of_name(&ch),ch);
     println!("typeof={},i128={}",type_of_name(&i128),i128);
     println!("typeof={},us={}",type_of_name(&us),us);
