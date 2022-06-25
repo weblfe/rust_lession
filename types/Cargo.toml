@@ -7,3 +7,5 @@ edition= "2021"
 
 [dependencies]
 rand = "0.8.5"
+stdext = "0.3.1"
+debugtrace = "0.1.0"

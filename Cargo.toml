@@ -2,7 +2,8 @@
 members = [
     "types",
     "hello_world",
-    "array"
+    "array",
+    "system_libc",
 ]
 
 

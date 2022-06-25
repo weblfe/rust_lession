@@ -1,5 +1,7 @@
 use std::format;
 use std::any::type_name;
+//use debugtrace::Trace;
+//use stdext::function_name;
 
 /// 类型 primitives
 /// 标量类型（scalar type）
@@ -8,7 +10,18 @@ fn main() {
     // 字符
     let ch = 'a';
     // 字符串
-    let str  = format!("{} {}","hello","world!");
+    let  str  = format!("{} {}","hello","world!");
+    let  str_from = String::from("测试 rust 字符串");
+    let mut i  = 0;
+
+    for x in str_from.chars() {
+        println!("{} {}",i,x);
+        i +=1 ;
+    }
+    let str_ref = str_from.as_str();
+    println!("str.len {}",str.chars().count());
+    let rep = str_from.replace("rust","12");
+    println!("before : {},replace after: {}",str_ref,rep);
     // 数字
     let num = 12;
     let i : isize = 123;
