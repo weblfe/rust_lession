@@ -105,7 +105,13 @@ fn main() {
     // 数组排序
     num_arr.sort();
     println!("after sort,num.len={},num={:?}", num_arr.len(), num_arr);
-
+    // 切片 值为 可变引用 (默认切片是 不开变引用-ref<container>)
+    let mut_slice_arr = &mut num_arr[..];
+    mut_slice_arr[0] = 0;
+    mut_slice_arr[1] = 0;
+    // 修改可变切片 索引对应值, 原数组对应位置值也变化
+    println!("after set,num.len={},num={:?}", num_arr.len(), num_arr);
+    //println!("mut_s_arr={:?}", mut_slice_arr);
 }
 
 fn type_of_name<T>(_:&T) -> &str {

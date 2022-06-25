@@ -1,5 +1,6 @@
 use std::format;
 use std::any::type_name;
+use std::fmt::Debug;
 //use debugtrace::Trace;
 //use stdext::function_name;
 
@@ -13,11 +14,26 @@ fn main() {
     let  str  = format!("{} {}","hello","world!");
     let  str_from = String::from("测试 rust 字符串");
     let mut i  = 0;
-
     for x in str_from.chars() {
-        println!("{} {}",i,x);
+        println!("index={}, value={}",i,x);
         i +=1 ;
     }
+    // 过滤
+    let new_str= str_from.chars().filter(|&x| x!=' ');
+
+    for x in new_str.clone().into_iter() {
+        println!("value={}",x);
+    }
+    for x in new_str.clone().into_iter() {
+        println!("value={}",x);
+    }
+    let mut str_new =String::new();
+    // 过滤
+    new_str.clone().for_each( |x| str_new.push(x));
+
+    //new_str.for_each( |x| str_new.push(x)); // 不clone 则new_str 被move, new_str 变量已消失
+    println!("new_str={}",str_new);
+
     let str_ref = str_from.as_str();
     println!("str.len {}",str.chars().count());
     let rep = str_from.replace("rust","12");
@@ -47,7 +63,7 @@ fn main() {
     // 单元类型
     let null = ();
     // 元组
-    let tu = (1,"123",true);
+    let tuple = (1, "123", true);
     // 数组
     let arr = [1,2,3,4];
     let str_arr = ["123","hee","1222"];
@@ -56,18 +72,36 @@ fn main() {
     pub struct Obj {
         age : isize,
         name : &'static str
-    }
+    } // C 结构
+    #[derive(Debug)]
+    struct Pair(usize,usize); // 元组结构
+    let p = Pair(0,1);
+    #[derive(Debug)]
+    struct Unit; // 单元结构
+
     let obj_new = Obj{
         age: 5,
         name: "rust"
     };
+    let u = Unit;
     // enum 枚举
     #[derive(Debug)]
-    enum Color {
+    enum RGB {
         Red,
         Green,
         Blue,
     }
+    #[derive(Debug)]
+    enum Color {
+        Red   = 0xfff0000,
+        Green = 0x00f0000,
+        Blue  = 0x00000ff,
+    }
+    println!("-----------------------");
+    println!("typeof={},u={:?}",type_of_name(&u),u);
+    println!("typeof={},p={:?},p.0={},p.1={}",type_of_name(&p),p,p.0,p.1);
+
+    println!("typeof={},red=0x{red:0>width$X},greed=0x{green:0>width$X},blue=0x{blue:0>width$X}",type_of_name(&Color::Red),red=(Color::Red as usize),blue=(Color::Blue as usize),green=(Color::Green as usize),width=7);
     // 按位异或与赋值
     println!("typeof={},zero_not2={}",type_of_name(&zero_not2),zero_not2);
     zero_not2 ^=xor;
@@ -91,9 +125,9 @@ fn main() {
     println!("typeof={},fx={}",type_of_name(&fx),fx);
     println!("typeof={},arr={:?}",type_of_name(&arr),arr);
     println!("typeof={},str_arr={:?}",type_of_name(&str_arr),str_arr);
-    println!("typeof={},tu={:?}",type_of_name(&tu),tu);
+    println!("typeof={},tuple={:?}", type_of_name(&tuple), tuple);
     println!("typeof={},struct={:?},{name},{age}",type_of_name(&obj_new),obj_new,name=obj_new.name,age=obj_new.age);
-    println!("typeof={},{red:?},{green:?},{blue:?}",type_of_name(&Color::Red),red=Color::Red,green=Color::Green,blue=Color::Blue);
+    println!("typeof={},{red:?},{green:?},{blue:?}", type_of_name(&RGB::Red), red= RGB::Red, green= RGB::Green, blue= RGB::Blue);
 }
 
 fn type_of_name<T>(_:&T) -> &str {
