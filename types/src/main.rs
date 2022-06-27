@@ -1,4 +1,4 @@
-use std::format;
+use std::{format};
 use std::any::type_name;
 use std::fmt::Debug;
 //use debugtrace::Trace;
@@ -84,19 +84,32 @@ fn main() {
         name: "rust"
     };
     let u = Unit;
-    // enum 枚举
+    // enum 枚举, 无参枚举
     #[derive(Debug)]
     enum RGB {
         Red,
         Green,
         Blue,
     }
+    // 代参枚举
     #[derive(Debug)]
     enum Color {
         Red   = 0xfff0000,
         Green = 0x00f0000,
         Blue  = 0x00000ff,
     }
+    //// 带参数 元组枚举
+    //enum IpAddr {
+    //    Ipv4(u8,u8,u8,u8),
+    //    Ipv6(usize,usize,usize,usize),
+    //    IpNaN,
+    //}
+    //// 元组枚举
+    //enum Options {
+    //    Ok(String),
+    //    Err(io::Error),
+    //}
+
     println!("-----------------------");
     println!("typeof={},u={:?}",type_of_name(&u),u);
     println!("typeof={},p={:?},p.0={},p.1={}",type_of_name(&p),p,p.0,p.1);
